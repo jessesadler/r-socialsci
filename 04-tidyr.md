@@ -79,9 +79,9 @@ either variable as an identifier corresponding to the 131 interview records.
 
 
 ``` r
-interviews %>% 
-  select(key_ID) %>% 
-  distinct() %>%
+interviews |> 
+  select(key_ID) |> 
+  distinct() |>
   nrow()
 ```
 
@@ -95,9 +95,9 @@ format, where each observation occupies only one row in the dataframe.
 
 
 ``` r
-interviews %>%
-  filter(village == "Chirodzo") %>%
-  select(key_ID, village, interview_date, instanceID) %>%
+interviews |>
+  filter(village == "Chirodzo") |>
+  select(key_ID, village, interview_date, instanceID) |>
   sample_n(size = 10)
 ```
 
@@ -105,16 +105,16 @@ interviews %>%
 # A tibble: 10 × 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
- 1     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
- 2     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
- 3     54 Chirodzo 2016-11-16 00:00:00 uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919
- 4    200 Chirodzo 2017-06-04 00:00:00 uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7
- 5     70 Chirodzo 2016-11-16 00:00:00 uuid:1feb0108-4599-4bf9-8a07-1f5e66a50a0a
- 6     52 Chirodzo 2016-11-16 00:00:00 uuid:6db55cb4-a853-4000-9555-757b7fae2bcf
- 7     66 Chirodzo 2016-11-16 00:00:00 uuid:a457eab8-971b-4417-a971-2e55b8702816
- 8      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
- 9     55 Chirodzo 2016-11-16 00:00:00 uuid:883c0433-9891-4121-bc63-744f082c1fa0
-10     43 Chirodzo 2016-11-17 00:00:00 uuid:b4dff49f-ef27-40e5-a9d1-acf287b47358
+ 1     46 Chirodzo 2016-11-17 00:00:00 uuid:35f297e0-aa5d-4149-9b7b-4965004cfc37
+ 2     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
+ 3     53 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
+ 4     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
+ 5      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
+ 6     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
+ 7     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
+ 8     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
+ 9     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
+10     61 Chirodzo 2016-11-16 00:00:00 uuid:2401cf50-8859-44d9-bd14-1bf9128766f2
 ```
 
 We notice that the layout or format of the `interviews` data is in a format that
@@ -198,7 +198,7 @@ the `interviews` data frame.
 
 
 ``` r
-interviews_items_owned <- interviews %>%
+interviews_items_owned <- interviews |>
 ```
 
 Then we will actually need to make our data frame longer, because we have 
@@ -214,7 +214,7 @@ other with "solar panel" in the `items_owned` column.
 
 
 ``` r
-separate_longer_delim(items_owned, delim = ";") %>%
+separate_longer_delim(items_owned, delim = ";") |>
 ```
 
 After this transformation, you may notice that the `items_owned` column contains
@@ -227,7 +227,7 @@ ends up looking like this:
 
 
 ``` r
-replace_na(list(items_owned = "no_listed_items")) %>%
+replace_na(list(items_owned = "no_listed_items")) |>
 ```
 
 Next, we create a new variable named `items_owned_logical`, which has one value
@@ -239,7 +239,7 @@ with logical values describing whether the household did (`TRUE`) or did not
 
 
 ``` r
-mutate(items_owned_logical = TRUE) %>%
+mutate(items_owned_logical = TRUE) |>
 ```
 
 ![](fig/separate_longer.png){alt="Two tables shown side-by-side. The first row
@@ -265,8 +265,8 @@ otherwise, the number of rows per group is returned using `n()`.
 
 
 ``` r
-group_by(key_ID) %>% 
-  mutate(number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
+group_by(key_ID) |> 
+  mutate(number_items = if_else(items_owned == "no_listed_items", 0, n())) |> 
 ```
 
 Lastly, we use `pivot_wider()` to switch from long format to wide format. This
@@ -296,12 +296,12 @@ are created within the same `mutate()` call.
 
 
 ``` r
-interviews_items_owned <- interviews %>%
-  separate_longer_delim(items_owned, delim = ";") %>%
-  replace_na(list(items_owned = "no_listed_items")) %>%
-  group_by(key_ID) %>%
+interviews_items_owned <- interviews |>
+  separate_longer_delim(items_owned, delim = ";") |>
+  replace_na(list(items_owned = "no_listed_items")) |>
+  group_by(key_ID) |>
   mutate(items_owned_logical = TRUE,
-         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>%
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) |>
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
               values_fill = list(items_owned_logical = FALSE))
@@ -321,9 +321,9 @@ showing the number of respondents in each village who owned a particular item:
 
 
 ``` r
-interviews_items_owned %>%
-  filter(bicycle) %>%
-  group_by(village) %>%
+interviews_items_owned |>
+  filter(bicycle) |>
+  group_by(village) |>
   count(bicycle)
 ```
 
@@ -343,8 +343,8 @@ count the items listed by each household.
 
 
 ``` r
-interviews_items_owned %>%
-    group_by(village) %>%
+interviews_items_owned |>
+    group_by(village) |>
     summarize(mean_items = mean(number_items))
 ```
 
@@ -377,11 +377,11 @@ value input was "none".
 
 
 ``` r
-months_lack_food <- interviews %>%
-  separate_longer_delim(months_lack_food, delim = ";") %>%
-  group_by(key_ID) %>%
+months_lack_food <- interviews |>
+  separate_longer_delim(months_lack_food, delim = ";") |>
+  group_by(key_ID) |>
   mutate(months_lack_food_logical = TRUE,
-         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) |>
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
               values_fill = list(months_lack_food_logical = FALSE))
@@ -415,7 +415,7 @@ column names. We will do this in two steps to make this process a bit clearer.
 
 
 ``` r
-interviews_long <- interviews_items_owned %>%
+interviews_long <- interviews_items_owned |>
   pivot_longer(cols = bicycle:car,
                names_to = "items_owned",
                values_to = "items_owned_logical")
@@ -442,9 +442,9 @@ the wide format is that you can now `count` all the items using the
 
 
 ``` r
-interviews_long %>%
-  filter(items_owned_logical) %>% 
-  group_by(village) %>% 
+interviews_long |>
+  filter(items_owned_logical) |> 
+  group_by(village) |> 
   count(items_owned)
 ```
 
@@ -488,21 +488,21 @@ we will call it `interviews_plotting`.
 
 ``` r
 ## Plotting data ##
-interviews_plotting <- interviews %>%
+interviews_plotting <- interviews |>
   ## pivot wider by items_owned
-  separate_longer_delim(items_owned, delim = ";") %>%
-  replace_na(list(items_owned = "no_listed_items")) %>%
+  separate_longer_delim(items_owned, delim = ";") |>
+  replace_na(list(items_owned = "no_listed_items")) |>
   ## Use of grouped mutate to find number of rows
-  group_by(key_ID) %>% 
+  group_by(key_ID) |> 
   mutate(items_owned_logical = TRUE,
-         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) |> 
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
-              values_fill = list(items_owned_logical = FALSE)) %>% 
+              values_fill = list(items_owned_logical = FALSE)) |> 
   ## pivot wider by months_lack_food
-  separate_longer_delim(months_lack_food, delim = ";") %>%
+  separate_longer_delim(months_lack_food, delim = ";") |>
   mutate(months_lack_food_logical = TRUE,
-         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) |>
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
               values_fill = list(months_lack_food_logical = FALSE))

@@ -58,7 +58,7 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
+</header><nav class="navbar navbar-expand-xl bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
@@ -107,12 +107,8 @@
     -->
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
-</nav><aside class="col-md-12 lesson-progress"><div style="width: 41%" class="percentage">
-    41%
-  </div>
-  <div class="progress data">
-    <div class="progress-bar data" role="progressbar" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="41" style="width: 41%">
-    </div>
+</nav><aside class="col-md-12 lesson-progress"><div class="progress data">
+    <div class="progress-bar data" role="progressbar" style="width: 41%" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">41%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -168,7 +164,7 @@
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
-            <hr></div><!--/div.mobile-row -->
+          </div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
@@ -320,23 +316,23 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/02-starting-with-data.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/04-tidyr.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/02-starting-with-data.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/04-tidyr.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/02-starting-with-data.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Starting with Data
+          Previous: Starting with Data...
         </a>
         <a class="chapter-link float-end" href="../instructor/04-tidyr.html" rel="next">
-          Next: Data Wrangling with...
+          Next: Data Wrangling with tidyr...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
-      <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
+    </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr</h1>
-        <p>Last updated on 2026-04-22 |
+        <p>Last updated on 2026-09-08 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -355,7 +351,7 @@
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <ul><li>This lesson works better if you have graphics demonstrating dplyr
 commands. You can modify <a href="https://docs.google.com/presentation/d/1A9abypFdFp8urAe9z7GCMjFr4aPeIb8mZAtJA2F7H0w/edit#slide=id.g652714585f_0_114" class="external-link">this
@@ -396,7 +392,7 @@ with the <strong><code>dplyr</code></strong> function
 <code>filter</code>.</li>
 <li>Link the output of one <strong><code>dplyr</code></strong> function
 to the input of another function with the ‘pipe’ operator
-<code>%&gt;%</code>.</li>
+<code>|&gt;</code>.</li>
 <li>Add new columns to a dataframe that are functions of existing
 columns with <code>mutate</code>.</li>
 <li>Use the split-apply-combine concept for data analysis.</li>
@@ -698,27 +694,56 @@ filtering, then selecting).</p>
 <p>The last option, <em>pipes</em>, are a recent addition to R. Pipes
 let you take the output of one function and send it directly to the
 next, which is useful when you need to do many things to the same
-dataset. There are two Pipes in R: 1) <code>%&gt;%</code> (called
-magrittr pipe; made available via the
+dataset. There are two Pipes in R: 1) <code>|&gt;</code> (called native
+pipe and comes preinstalled with R v4.1.0 onwards) or 2)
+<code>%&gt;%</code> (called magrittr pipe and made available via the
 <strong><code>magrittr</code></strong> package, installed automatically
-with <strong><code>dplyr</code></strong>) or 2) <code>|&gt;</code>
-(called native R pipe and it comes preinstalled with R v4.1.0 onwards).
-Both the pipes are, by and large, function similarly with a few
-differences (For more information, check: <a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/" class="external-link uri">https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/</a>).
-The choice of which pipe to be used can be changed in the Global
-settings in R studio and once that is done, you can type the pipe
-with:</p>
+with <strong><code>dplyr</code></strong> and
+<strong><code>tidyverse</code></strong>`). Both pipes work similarly
+with a few differences that are unlikely to affect most users. For more
+information, check out <a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/" class="external-link">this
+blog post</a>.</p>
+<div id="note-2" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="note-2" class="callout-inner">
+<h3 class="callout-title">Note</h3>
+<div class="callout-content">
+<p><strong>RStudio:</strong> The choice of what pipe to use in RStudio
+can be changed in the Global settings. Once that is set, you can type
+the pipe with:</p>
 <ul><li>
 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC
 or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a
 Mac.</li>
-</ul><div class="codewrapper sourceCode" id="cb13">
+</ul></div>
+</div>
+</div>
+<div id="note-3" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="note-3" class="callout-inner">
+<h3 class="callout-title">Note</h3>
+<div class="callout-content">
+<p>In this lesson, we will use the native pipe <code>|&gt;</code> for
+consistency with modern R (&gt;=4.1.0). However, the magrittr pipe
+<code>%&gt;%</code> (from the <strong>magrittr</strong> package, loaded
+with <strong>tidyverse</strong>) is a widely used alternative and works
+similarly.</p>
+</div>
+</div>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># the following example is run using magrittr pipe but the output will be same with the native pipe</span></span>
-<span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">village</span><span class="op">:</span><span class="va">respondent_wall_type</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -751,10 +776,10 @@ Mac.</li>
 <code>interviews</code> dataset first through <code>filter()</code> to
 keep rows where <code>village</code> is “Chirodzo”, then through
 <code>select()</code> to keep only the columns from <code>village</code>
-to <code>respondent_wall_type</code>. Since <code>%&gt;%</code> takes
-the object on its left and passes it as the first argument to the
-function on its right, we don’t need to explicitly include the dataframe
-as an argument to the <code>filter()</code> and <code>select()</code>
+to <code>respondent_wall_type</code>. Since <code>|&gt;</code> takes the
+object on its left and passes it as the first argument to the function
+on its right, we don’t need to explicitly include the dataframe as an
+argument to the <code>filter()</code> and <code>select()</code>
 functions any more.</p>
 <p>Some may find it helpful to read the pipe like the word “then”. For
 instance, in the above example, we take the dataframe
@@ -770,8 +795,8 @@ data, we can assign it a new name:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_ch</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_ch</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">village</span><span class="op">:</span><span class="va">respondent_wall_type</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">interviews_ch</span></span></code></pre>
@@ -817,14 +842,14 @@ interviews where respondents were members of an irrigation association
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">memb_assoc</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">memb_assoc</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">affect_conflicts</span>, <span class="va">liv_count</span>, <span class="va">no_meals</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -860,7 +885,7 @@ rooms used for sleeping (i.e. avg number of people per room):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>people_per_room <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">/</span> <span class="va">rooms</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -896,8 +921,8 @@ chain:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>people_per_room <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">/</span> <span class="va">rooms</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -952,15 +977,15 @@ to produce this data frame!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_total_meals</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">mutate</span><span class="op">(</span>total_meals <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">*</span> <span class="va">no_meals</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">total_meals</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_total_meals</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>total_meals <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">*</span> <span class="va">no_meals</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">total_meals</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">village</span>, <span class="va">total_meals</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
@@ -985,8 +1010,8 @@ average household size by village:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1004,8 +1029,8 @@ average household size by village:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1043,9 +1068,9 @@ columns which is indicated by the by two first lines with the
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1084,9 +1109,9 @@ We can exclude those data from our table using a filter step.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1122,9 +1147,9 @@ not):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
 <span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1159,11 +1184,11 @@ the group with the smallest household first:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">min_membrs</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1197,11 +1222,11 @@ household size:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">min_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1240,7 +1265,7 @@ village, we would do:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">count</span><span class="op">(</span><span class="va">village</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1259,7 +1284,7 @@ argument to get results in decreasing order:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">count</span><span class="op">(</span><span class="va">village</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1291,13 +1316,13 @@ represented?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">count</span><span class="op">(</span><span class="va">no_meals</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1333,14 +1358,14 @@ add the number of observations (hint: see <code>?n</code>).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize</span><span class="op">(</span></span>
 <span>      mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
 <span>      min_no_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
@@ -1380,7 +1405,7 @@ add the number of observations (hint: see <code>?n</code>).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1388,11 +1413,11 @@ add the number of observations (hint: see <code>?n</code>).</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># if not already included, add month, year, and day columns</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">lubridate</span><span class="op">)</span> <span class="co"># load lubridate if not already loaded</span></span>
-<span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
 <span>           day <span class="op">=</span> <span class="fu">day</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
-<span>           year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>           year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1448,10 +1473,10 @@ with subsets of data.</li>
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/02-starting-with-data.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Starting with Data
+          Previous: Starting with Data...
         </a>
         <a class="chapter-link float-end" href="../instructor/04-tidyr.html" rel="next">
-          Next: Data Wrangling with...
+          Next: Data Wrangling with tidyr...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1477,7 +1502,7 @@ with subsets of data.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.0)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1499,8 +1524,8 @@ with subsets of data.</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/03-dplyr.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/03-dplyr.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-04-22",
-  "datePublished": "2026-05-19"
+  "dateModified": "2026-09-08",
+  "datePublished": "2026-09-08"
 }
 
   </script><script>

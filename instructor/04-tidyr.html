@@ -58,7 +58,7 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
+</header><nav class="navbar navbar-expand-xl bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
@@ -107,12 +107,8 @@
     -->
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
-</nav><aside class="col-md-12 lesson-progress"><div style="width: 49%" class="percentage">
-    49%
-  </div>
-  <div class="progress data">
-    <div class="progress-bar data" role="progressbar" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="49" style="width: 49%">
-    </div>
+</nav><aside class="col-md-12 lesson-progress"><div class="progress data">
+    <div class="progress-bar data" role="progressbar" style="width: 49%" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">49%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -168,7 +164,7 @@
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
-            <hr></div><!--/div.mobile-row -->
+          </div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
@@ -319,23 +315,23 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/03-dplyr.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/05-ggplot2.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/03-dplyr.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/05-ggplot2.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/03-dplyr.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Data Wrangling with
+          Previous: Data Wrangling with dplyr...
         </a>
         <a class="chapter-link float-end" href="../instructor/05-ggplot2.html" rel="next">
-          Next: Data Visualisation...
+          Next: Data Visualisation with ggplot2...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
-      <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
+    </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with tidyr</h1>
-        <p>Last updated on 2026-04-22 |
+        <p>Last updated on 2026-09-08 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/04-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -435,9 +431,9 @@ identifier corresponding to the 131 interview records.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">nrow</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -453,9 +449,9 @@ row in the dataframe.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">key_ID</span>, <span class="va">village</span>, <span class="va">interview_date</span>, <span class="va">instanceID</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">key_ID</span>, <span class="va">village</span>, <span class="va">interview_date</span>, <span class="va">instanceID</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">sample_n</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -464,16 +460,16 @@ row in the dataframe.</p>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 4
    key_ID village  interview_date      instanceID
     &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;              &lt;chr&gt;
- 1     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
- 2     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
- 3     54 Chirodzo 2016-11-16 00:00:00 uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919
- 4    200 Chirodzo 2017-06-04 00:00:00 uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7
- 5     70 Chirodzo 2016-11-16 00:00:00 uuid:1feb0108-4599-4bf9-8a07-1f5e66a50a0a
- 6     52 Chirodzo 2016-11-16 00:00:00 uuid:6db55cb4-a853-4000-9555-757b7fae2bcf
- 7     66 Chirodzo 2016-11-16 00:00:00 uuid:a457eab8-971b-4417-a971-2e55b8702816
- 8      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
- 9     55 Chirodzo 2016-11-16 00:00:00 uuid:883c0433-9891-4121-bc63-744f082c1fa0
-10     43 Chirodzo 2016-11-17 00:00:00 uuid:b4dff49f-ef27-40e5-a9d1-acf287b47358</code></pre>
+ 1     46 Chirodzo 2016-11-17 00:00:00 uuid:35f297e0-aa5d-4149-9b7b-4965004cfc37
+ 2     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
+ 3     53 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
+ 4     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
+ 5      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
+ 6     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
+ 7     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
+ 8     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
+ 9     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
+10     61 Chirodzo 2016-11-16 00:00:00 uuid:2401cf50-8859-44d9-bd14-1bf9128766f2</code></pre>
 </div>
 <p>We notice that the layout or format of the <code>interviews</code>
 data is in a format that adheres to rules 1-3, where</p>
@@ -552,7 +548,7 @@ line by line. First we create a new object
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a>interviews_items_owned <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a>interviews_items_owned <span class="ot">&lt;-</span> interviews <span class="sc">|&gt;</span></span></code></pre>
 </div>
 <p>Then we will actually need to make our data frame longer, because we
 have multiple items in a single cell. We will use a new function,
@@ -569,7 +565,7 @@ with “solar panel” in the <code>items_owned</code> column.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">separate_longer_delim</span>(items_owned, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="fu">separate_longer_delim</span>(items_owned, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">|&gt;</span></span></code></pre>
 </div>
 <p>After this transformation, you may notice that the
 <code>items_owned</code> column contains <code>NA</code> values. This is
@@ -583,7 +579,7 @@ the <code>NA</code>s. This ends up looking like this:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">items_owned =</span> <span class="st">"no_listed_items"</span>)) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">items_owned =</span> <span class="st">"no_listed_items"</span>)) <span class="sc">|&gt;</span></span></code></pre>
 </div>
 <p>Next, we create a new variable named
 <code>items_owned_logical</code>, which has one value
@@ -596,7 +592,7 @@ describing whether the household did (<code>TRUE</code>) or did not
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="fu">mutate</span>(<span class="at">items_owned_logical =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="fu">mutate</span>(<span class="at">items_owned_logical =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span></code></pre>
 </div>
 <figure><img src="../fig/separate_longer.png" alt="Two tables shown side-by-side. The first row of the left table is highlighted in blue, and the first four rows of the right table are also highlighted in blue to show how each of the values of 'items owned' are given their own row with the separate longer delim function. The 'items owned logical' column is highlighted in yellow on the right table to show how the mutate function adds a new column." class="figure mx-auto d-block"></figure><p>At this point, we can also count the number of items owned by each
 household, which is equivalent to the number of rows per
@@ -619,8 +615,8 @@ using <code>n()</code>.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="fu">group_by</span>(key_ID) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a>  <span class="fu">mutate</span>(<span class="at">number_items =</span> <span class="fu">if_else</span>(items_owned <span class="sc">==</span> <span class="st">"no_listed_items"</span>, <span class="dv">0</span>, <span class="fu">n</span>())) <span class="sc">%&gt;%</span> </span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="fu">group_by</span>(key_ID) <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a>  <span class="fu">mutate</span>(<span class="at">number_items =</span> <span class="fu">if_else</span>(items_owned <span class="sc">==</span> <span class="st">"no_listed_items"</span>, <span class="dv">0</span>, <span class="fu">n</span>())) <span class="sc">|&gt;</span> </span></code></pre>
 </div>
 <p>Lastly, we use <code>pivot_wider()</code> to switch from long format
 to wide format. This creates a new column for each of the unique values
@@ -642,12 +638,12 @@ new columns are created within the same <code>mutate()</code> call.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>         number_items <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">items_owned</span> <span class="op">==</span> <span class="st">"no_listed_items"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>         number_items <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">items_owned</span> <span class="op">==</span> <span class="st">"no_listed_items"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">items_owned</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="va">items_owned_logical</span>,</span>
 <span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
@@ -670,9 +666,9 @@ particular item:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">bicycle</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">bicycle</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">bicycle</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -693,8 +689,8 @@ column we created to count the items listed by each household.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_items <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">number_items</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -733,17 +729,17 @@ months, the value input was “none”.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">months_lack_food</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">months_lack_food</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>         number_months_lack_food <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">months_lack_food</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>         number_months_lack_food <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">months_lack_food</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">months_lack_food</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="va">months_lack_food_logical</span>,</span>
 <span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
@@ -775,7 +771,7 @@ with values associated with the <em>cols</em> provided.</li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">&lt;-</span> <span class="va">interviews_items_owned</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">&lt;-</span> <span class="va">interviews_items_owned</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">bicycle</span><span class="op">:</span><span class="va">car</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"items_owned"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"items_owned_logical"</span><span class="op">)</span></span></code></pre>
@@ -806,15 +802,15 @@ all the items using the <code>items_owned</code> variable.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">items_owned_logical</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">items_owned_logical</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">count</span><span class="op">(</span><span class="va">items_owned</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -858,21 +854,21 @@ for the next episode, we will call it
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Plotting data ##</span></span>
-<span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co">## pivot wider by items_owned</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co">## Use of grouped mutate to find number of rows</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>         number_items <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">items_owned</span> <span class="op">==</span> <span class="st">"no_listed_items"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>         number_items <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">items_owned</span> <span class="op">==</span> <span class="st">"no_listed_items"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">items_owned</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="va">items_owned_logical</span>,</span>
-<span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co">## pivot wider by months_lack_food</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>         number_months_lack_food <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">months_lack_food</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>         number_months_lack_food <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">months_lack_food</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">months_lack_food</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="va">months_lack_food_logical</span>,</span>
 <span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
@@ -928,10 +924,10 @@ frames.</li>
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/03-dplyr.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Data Wrangling with
+          Previous: Data Wrangling with dplyr...
         </a>
         <a class="chapter-link float-end" href="../instructor/05-ggplot2.html" rel="next">
-          Next: Data Visualisation...
+          Next: Data Visualisation with ggplot2...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -957,7 +953,7 @@ frames.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.0)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -979,8 +975,8 @@ frames.</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/04-tidyr.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/04-tidyr.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-04-22",
-  "datePublished": "2026-05-19"
+  "dateModified": "2026-09-08",
+  "datePublished": "2026-09-08"
 }
 
   </script><script>

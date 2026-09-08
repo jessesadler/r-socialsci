@@ -58,7 +58,7 @@
         </ul></div>
     </div>
   </div>
-  <hr></header><nav class="navbar navbar-expand-xl bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
+</header><nav class="navbar navbar-expand-xl bottom-nav data" aria-label="Main Navigation"><div class="container-fluid nav-container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
       <span class="menu-title">Menu</span>
@@ -107,12 +107,8 @@
     -->
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
-</nav><aside class="col-md-12 lesson-progress"><div style="width: 58%" class="percentage">
-    58%
-  </div>
-  <div class="progress data">
-    <div class="progress-bar data" role="progressbar" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="58" style="width: 58%">
-    </div>
+</nav><aside class="col-md-12 lesson-progress"><div class="progress data">
+    <div class="progress-bar data" role="progressbar" style="width: 58%" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">58%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -168,7 +164,7 @@
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
-            <hr></div><!--/div.mobile-row -->
+          </div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordion-chapters-toggle">
             <div class="accordion-item">
@@ -323,23 +319,23 @@
         <!-- START: inst/pkgdown/templates/content-instructor.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link" href="../instructor/04-tidyr.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="../instructor/06-rmarkdown.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link" href="../instructor/04-tidyr.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
+        <a class="chapter-link float-end" href="../instructor/06-rmarkdown.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/04-tidyr.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Data Wrangling with
+          Previous: Data Wrangling with tidyr...
         </a>
         <a class="chapter-link float-end" href="../instructor/06-rmarkdown.html" rel="next">
-          Next: Getting started with...
+          Next: Getting started with R Markdown...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
-      <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
+    </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Visualisation with ggplot2</h1>
-        <p>Last updated on 2026-04-22 |
+        <p>Last updated on 2026-09-08 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/05-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -458,7 +454,7 @@ the data, then you can create it now. Either download it using
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -466,27 +462,27 @@ the data, then you can create it now. Either download it using
 <code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/interviews_plotting.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
+<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Can be used to load in data from previous lesson!</span></span>
-<span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co">## pivot wider by items_owned</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co">## Use of grouped mutate to find number of rows</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>         number_items <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">items_owned</span> <span class="op">==</span> <span class="st">"no_listed_items"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>         number_items <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">items_owned</span> <span class="op">==</span> <span class="st">"no_listed_items"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">items_owned</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="va">items_owned_logical</span>,</span>
-<span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co">## pivot wider by months_lack_food</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>         number_months_lack_food <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">months_lack_food</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>         number_months_lack_food <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">months_lack_food</span> <span class="op">==</span> <span class="st">"none"</span>, <span class="fl">0</span>, <span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">months_lack_food</span>,</span>
 <span>              values_from <span class="op">=</span> <span class="va">months_lack_food_logical</span>,</span>
 <span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
@@ -575,11 +571,11 @@ alpha</li>
 (<code>geom_line</code>), etc.</li>
 </ul></li>
 </ul><p>Thus, the template for graphic in ggplot2 is:</p>
-<pre><code>&lt;DATA&gt; %&gt;%
+<pre><code>&lt;DATA&gt; |&gt;
     ggplot(aes(&lt;MAPPINGS&gt;)) +
     &lt;GEOM_FUNCTION&gt;()</code></pre>
 <p>Remember from the last lesson that the pipe operator
-<code>%&gt;%</code> places the result of the previous line(s) into the
+<code>|&gt;</code> places the result of the previous line(s) into the
 first argument of the function. <strong><code>ggplot</code></strong> is
 a function that expects a data frame to be the first argument. This
 allows for us to change from specifying the <code>data =</code> argument
@@ -591,7 +587,7 @@ specific data frame.</li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <ul><li>define a mapping (using the aesthetic (<code>aes</code>) function),
@@ -602,7 +598,7 @@ size, shape, color, etc.</li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <ul><li>
@@ -623,7 +619,7 @@ first:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
@@ -638,7 +634,7 @@ above plot can also be generated with code like this, similar to the
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Assign plot to a variable</span></span>
-<span><span class="va">interviews_plot</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews_plot</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Draw the plot as a dot plot</span></span>
@@ -687,7 +683,7 @@ use, lay out the axes, and choose a geom:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
@@ -721,7 +717,7 @@ gray):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre>
 </div>
@@ -743,7 +739,7 @@ below:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_jitter</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
@@ -759,7 +755,7 @@ Experiment with the values to see how your plot changes.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                width <span class="op">=</span> <span class="fl">0.2</span>,</span>
@@ -772,7 +768,7 @@ specifying a <code>color</code> argument inside the
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
 <span>                color <span class="op">=</span> <span class="st">"blue"</span>,</span>
@@ -801,11 +797,11 @@ observation:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">no_membrs</span>, y <span class="op">=</span> <span class="va">number_items</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">village</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, width <span class="op">=</span> <span class="fl">0.2</span>, height <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/05-ggplot2-rendered-color-by-village-1.png" alt="Previous plot with points colored by village and an added legend with color keys for each village" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There appears to be a positive trend between number of household
+<figure><img src="../fig/05-ggplot2-rendered-color-by-species-1.png" alt="Previous plot with points colored by village and an added legend with color keys for each village" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There appears to be a positive trend between number of household
 members and number of items owned (from the list provided).
 Additionally, this trend does not appear to be different by village.</p>
 <div id="notes-1" class="callout">
@@ -822,7 +818,7 @@ to use the <code>geom_count</code> plotting function. The
 <code>geom_count()</code> function makes the size of each point
 representative of the number of data items of that type and the legend
 gives point sizes associated to particular numbers of items.</p>
-<p><code>{r color-by-village-notes, fig.alt="Previous plot with points colored by village and sized based on the number of cases at each coordinate set. There are two legends, one labeled 'n' and one labeled  'village'", purl=FALSE} interviews_plotting %&gt;%    ggplot(aes(x = no_membrs, y = number_items, color = village)) +    geom_count()</code></p>
+<p><code>{r color-by-village-notes, fig.alt="Previous plot with points colored by village and sized based on the number of cases at each coordinate set. There are two legends, one labeled 'n' and one labeled  'village'", purl=FALSE} interviews_plotting |&gt;    ggplot(aes(x = no_membrs, y = number_items, color = village)) +    geom_count()</code></p>
 </div>
 </div>
 </div>
@@ -854,7 +850,7 @@ data?</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">rooms</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span>,</span>
 <span>      alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -875,7 +871,7 @@ wall type:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">rooms</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
@@ -885,7 +881,7 @@ number of measurements and of their distribution:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">rooms</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -926,7 +922,7 @@ where the shape (of the density of points) is drawn.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">rooms</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_violin</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span>, color <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span></span></code></pre>
@@ -970,7 +966,7 @@ measurements.</li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">liv_count</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>   <span class="fu">geom_jitter</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span>, width <span class="op">=</span> <span class="fl">0.2</span>, height <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
@@ -1005,7 +1001,7 @@ the respondent is a member of an irrigation association
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">liv_count</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_boxplot</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_jitter</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">memb_assoc</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">0.5</span>, width <span class="op">=</span> <span class="fl">0.2</span>, height <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></code></pre>
@@ -1023,7 +1019,7 @@ the dataset.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1034,7 +1030,7 @@ that is from each village.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">village</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1047,7 +1043,7 @@ setting it to “dodge”.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">village</span><span class="op">)</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1064,11 +1060,11 @@ dataset.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">respondent_wall_type</span> <span class="op">!=</span> <span class="st">"cement"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">count</span><span class="op">(</span><span class="va">village</span>, <span class="va">respondent_wall_type</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">mutate</span><span class="op">(</span>percent <span class="op">=</span> <span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu">sum</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">respondent_wall_type</span> <span class="op">!=</span> <span class="st">"cement"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">count</span><span class="op">(</span><span class="va">village</span>, <span class="va">respondent_wall_type</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>percent <span class="op">=</span> <span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu">sum</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Now we can use this new data frame to create our plot showing the
@@ -1077,7 +1073,7 @@ percentage of each house type in each village.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span>, fill <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1108,14 +1104,14 @@ proportion of respondents in an irrigation association?</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_memb_assoc</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>percent <span class="op">=</span> <span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu">sum</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_memb_assoc</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>percent <span class="op">=</span> <span class="op">(</span><span class="va">n</span> <span class="op">/</span> <span class="fu">sum</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">percent_memb_assoc</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">percent_memb_assoc</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span>, fill <span class="op">=</span> <span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1149,7 +1145,7 @@ the plot (e.g., <code>x</code>, <code>y</code>, <code>fill</code>,
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span>, fill <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Proportion of wall type by village"</span>,</span>
@@ -1172,7 +1168,7 @@ has its own panel in a multi-panel plot:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">labs</span><span class="op">(</span>title<span class="op">=</span><span class="st">"Proportion of wall type by village"</span>,</span>
@@ -1189,7 +1185,7 @@ We can set the background to white using the function
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_wall_type</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">respondent_wall_type</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">labs</span><span class="op">(</span>title<span class="op">=</span><span class="st">"Proportion of wall type by village"</span>,</span>
@@ -1209,9 +1205,9 @@ item:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">summarize</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="va">bicycle</span><span class="op">:</span><span class="va">no_listed_items</span>, <span class="op">~</span> <span class="fu">sum</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">/</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">&lt;-</span> <span class="va">interviews_plotting</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="va">bicycle</span><span class="op">:</span><span class="va">no_listed_items</span>, <span class="op">~</span> <span class="fu">sum</span><span class="op">(</span><span class="va">.x</span><span class="op">)</span> <span class="op">/</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">bicycle</span><span class="op">:</span><span class="va">no_listed_items</span>, names_to <span class="op">=</span> <span class="st">"items"</span>, values_to <span class="op">=</span> <span class="st">"percent"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>To calculate this percentage data frame, we needed to use the
@@ -1242,7 +1238,7 @@ multi-paneled bar plot.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">items</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1264,11 +1260,11 @@ theme). The <a href="https://exts.ggplot2.tidyverse.org/" class="external-link">
 extensions website</a> provides a list of packages that extend the
 capabilities of <strong><code>ggplot2</code></strong>, including
 additional themes.</p>
-<div id="exercise-3" class="callout discussion">
+<div id="exercise-3" class="callout challenge">
 <div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+<i class="callout-icon" data-feather="zap"></i>
 </div>
-<span class="callout-header">Discussion</span>
+<span class="callout-header">Challenge</span>
 <div id="exercise-3" class="callout-inner">
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
@@ -1286,7 +1282,7 @@ cheat sheet</a>, and think of ways you could improve the plot.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">items</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1301,7 +1297,7 @@ improved by increasing the font size:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">items</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1326,7 +1322,7 @@ insert a new line:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">percent_items</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">items</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1356,7 +1352,7 @@ title:</p>
 <span>                    plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="va">percent_items</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">percent_items</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">items</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1365,11 +1361,11 @@ title:</p>
 <span>         y <span class="op">=</span> <span class="st">"Percent of Respondents"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="va">grey_theme</span></span></code></pre>
 </div>
-<figure><img src="../fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" alt="Identical plot to previous multi-panel bar chart, but with the figure title centered horizontally" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="exercise-4" class="callout discussion">
+<figure><img src="../fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" alt="Identical plot to previous multi-panel bar chart, but with the figure title centered horizontally" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="exercise-4" class="callout challenge">
 <div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
+<i class="callout-icon" data-feather="zap"></i>
 </div>
-<span class="callout-header">Discussion</span>
+<span class="callout-header">Challenge</span>
 <div id="exercise-4" class="callout-inner">
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
@@ -1396,7 +1392,7 @@ working directory.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_plot</span> <span class="op">&lt;-</span> <span class="va">percent_items</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">my_plot</span> <span class="op">&lt;-</span> <span class="va">percent_items</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">items</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1445,10 +1441,10 @@ categorical variable.</li>
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="../instructor/04-tidyr.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Data Wrangling with
+          Previous: Data Wrangling with tidyr...
         </a>
         <a class="chapter-link float-end" href="../instructor/06-rmarkdown.html" rel="next">
-          Next: Getting started with...
+          Next: Getting started with R Markdown...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1474,7 +1470,7 @@ categorical variable.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.0)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1496,8 +1492,8 @@ categorical variable.</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/05-ggplot2.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/05-ggplot2.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-04-22",
-  "datePublished": "2026-05-19"
+  "dateModified": "2026-09-08",
+  "datePublished": "2026-09-08"
 }
 
   </script><script>
